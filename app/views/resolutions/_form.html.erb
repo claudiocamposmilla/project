@@ -1,0 +1,34 @@
+<%= form_with(model: resolution) do |form| %>
+
+  <div>
+    <% if can? :update, @resolution %>
+      <div class="field">
+       <h3> <%= form.label :resolved %>
+        <% options = Resolution.resolveds.keys.map(&:to_s) %>
+      </h3>
+    <div class="form-group">
+      <%= form.select :resolved, options_for_select(options, @resolution.resolved), {}, class: "form-control" %>
+    </div>      </div>
+    <% end %>
+  </div>
+
+  <% if current_user.normal? %>
+    <div>
+      <%= form.label :evaluation, style: "display: block" %>
+      <%= form.select :evaluation, (1..5).to_a %>
+    </div>
+
+    <div>
+      <%= form.label :user_body, style: "display: block" %>
+      <%= form.text_field :user_body , class: 'form-control'%>
+    </div>
+
+
+
+  <% end %>
+
+<br>
+<div class="d-grid gap-1 col-3 ">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+<% end %>

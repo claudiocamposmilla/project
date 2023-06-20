@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  claim_date: 2023-06-17
+  due_date: 2023-06-17
+  incident_date: 2023-06-17
+  summary: MyString
+  description: MyString
+  priority: 1
+  status: 1
+
+two:
+  claim_date: 2023-06-17
+  due_date: 2023-06-17
+  incident_date: 2023-06-17
+  summary: MyString
+  description: MyString
+  priority: 1
+  status: 1

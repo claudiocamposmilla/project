@@ -1,0 +1,34 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @ticket %>
+
+<% @ticket.user_comments.each do |user_comment| %>
+  <% userid = user_comment.user_id %>
+  <% user = User.find(userid) %>
+  <% if user.normal? %>
+
+  <% else %>
+  <% end %>
+<% end %>
+
+<br>
+
+<div class="form-container m-3">
+  <div>
+    <% if can? :modify_profile, @user %>
+      <div class="field">
+        <%= link_to "Edit this ticket", edit_ticket_path(@ticket) , class:"btn btn-outline-secondary"%>
+        <%= button_to "Destroy this ticket", @ticket, method: :delete, class:"btn btn-outline-danger" %>
+      </div>
+    <% end %>
+    <br>
+    <% if current_user.normal? || current_user.executive? %>
+      <%= link_to "Volver a Mis Tickets", my_comments_user_path(@user) , class:"btn btn-outline-secondary"%>
+    <% else %>
+      <%= link_to "Back to Tickets", tickets_path, class:"btn btn-outline-secondary" %>
+    <% end %>
+  </div>
+  <br>
+</div>
+
+

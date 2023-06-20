@@ -1,0 +1,54 @@
+<div class="card m-3">
+  <div class="card-header">
+
+ 
+  <div class="card-body">
+    <blockquote class="blockquote mb-1">
+      <p>
+        <strong>Ticket:</strong>
+          <%= dom_id ticket %> 
+        </p>
+        <strong>Claim date:</strong>
+        <%= ticket.claim_date %>
+      </p>
+      <p>
+        <strong>Due date:</strong>
+        <%= ticket.due_date %>
+      </p>
+      <p>
+        <strong>Incident date:</strong>
+        <%= ticket.incident_date %>
+      </p>
+      <p>
+        <strong>Summary:</strong>
+        <%= ticket.summary %>
+      </p>
+      <p>
+        <strong>Description:</strong>
+        <%= ticket.description %>
+      </p>
+      <p>
+        <strong>Priority:</strong>
+        <%= ticket.priority %>
+      </p>
+      <p>
+        <strong>Status:</strong>
+        <%= ticket.status %>
+      </p>
+      
+      <% ticket.user_comments.each do |user_comment| %>
+        <% userid = user_comment.user_id %>
+        <% user = User.find(userid) %>
+        <% if user.normal? %>
+          <strong>Client:</strong>
+          <%= user.name %>
+        <% else %>
+        <% end %>
+      <% end %>
+      </blockquote>
+      </div>
+
+    
+    
+  </div>
+</div>

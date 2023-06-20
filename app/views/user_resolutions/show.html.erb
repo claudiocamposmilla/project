@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @user_resolution %>
+
+<div>
+  <%= link_to "Edit this user resolution", edit_user_resolution_path(@user_resolution) %> |
+  <%= link_to "Back to user resolutions", user_resolutions_path %>
+
+  <%= button_to "Destroy this user resolution", @user_resolution, method: :delete %>
+</div>

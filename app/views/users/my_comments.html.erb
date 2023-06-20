@@ -1,0 +1,35 @@
+<br>
+
+<h1 style="margin-left: 50px;">Mis Tickets</h1>
+
+  <% @tickets.each do |ticket| %>
+      <div class="card m-5">
+      <div class="card-header">
+      <div class="card-body">
+      <blockquote class="blockquote mb-3">
+          <div><h2><%= ticket.summary %></h2></div>
+          <div>
+          <br>
+          <figcaption class="blockquote-footer">
+          <%= ticket.claim_date %></div>
+
+          <div><%= ticket.description %></div>
+          
+          <br>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <%= link_to "Show this ticket", ticket, class:"btn btn-secondary" %>
+          </div>  
+
+      </blockquote>
+      </div>
+      </div>
+      </div>      
+    
+  <% end %>
+
+
+<div class="d-grid gap-2 col-6 mx-auto">
+  <%= link_to "Crear nuevo ticket", new_ticket_path, class: "btn btn-success" %>
+</div>
+<br>
+

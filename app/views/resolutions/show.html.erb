@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+
+  <div class="card-body">
+  <blockquote class="blockquote mb-1">
+<%= render @resolution %>
+
+
+<div>
+  <% if current_user.normal? || current_user.executive? %>
+    <%= link_to "Volver a Mis Resolutions", my_resolutions_user_path(@user) , class:"btn btn-outline-secondary"%>
+  <% else %>
+    <%= link_to "Back to resolutions", resolutions_path, class:"btn btn-outline-secondary" %>
+  <% end %>
+
+  <%= link_to "Edit this resolution", edit_resolution_path(@resolution), class:"btn btn-outline-secondary" %>
+
+  <br>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= button_to "Destroy this resolution", @resolution, method: :delete , class:"btn btn-danger"%>
+</div>
+  <% if current_user.executive? %>
+    <%= link_to "Crear resolución", new_resolution_path, class: "btn btn-primary" %>
+  <% end %>
+
+
+</div>
+</blockquote>
+</div>
+</div>
+
+

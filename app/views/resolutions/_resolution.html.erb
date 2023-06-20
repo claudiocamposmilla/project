@@ -1,0 +1,39 @@
+<div class="card m-5">
+  <div class="card-header">
+
+ 
+  <div class="card-body">
+    <blockquote class="blockquote mb-1">
+    <div id="<%= dom_id resolution %>">
+    
+  <p>
+
+      <strong>Ticket:</strong>
+      <%= resolution.ticket_id %>
+    </p>
+
+    <p>
+      <strong>Resolved:</strong>
+      <%= Resolution.resolveds.key(resolution.resolved).to_s.humanize %>
+    </p>
+
+    <p>
+      <strong>Evaluation:</strong>
+      <%= resolution.evaluation %>
+    </p>
+
+    <p>
+      <strong>Executive comment:</strong>
+      <%= resolution.resolution_comment %>
+    </p>
+
+    <p>
+      <strong>User comment:</strong>
+      <%= resolution.user_body %>
+    </p>
+
+
+
+  </div>
+</div>
+

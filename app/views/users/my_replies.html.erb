@@ -1,0 +1,31 @@
+<br>
+<h1 style="margin-left: 50px;">Mis Respuestas</h1>
+
+
+
+
+<% @user_comments_grouped_by_ticket.each do |ticket_id, comments| %>
+  <div class="card m-5">
+  <div class="card-header">
+
+    <h2>Ticket ID: <%= ticket_id %></h2>
+    <div class="card-body">
+    
+        <blockquote class="blockquote mb-1">
+          <p><%= comments.first.ticket.description %></p>
+        </blockquote>
+        <blockquote class="blockquote mb-1">
+            <% comments.each do |comment| %>
+              <div class="comment-block">
+                <p><%= comment.body %></p>
+              </div>
+
+            <% end %>
+            <%= link_to "Crear comment", new_user_comment_path, class: "btn btn-secondary" %>
+
+            </blockquote>
+  </div>
+  </div>
+  </div>
+  </div>
+<% end %>

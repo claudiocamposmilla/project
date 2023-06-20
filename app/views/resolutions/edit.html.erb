@@ -1,0 +1,18 @@
+<br>
+<h1 style="margin-left: 50px;">Editing resolution</h1>
+<div class="card m-5">
+<div class="card-header">
+<div class="card-body">
+          <blockquote class="blockquote mb-1">
+<%= render "form", resolution: @resolution %>
+
+<br>
+
+<div>
+  <%= link_to "Show this resolution", @resolution, class:"btn btn-secondary" %> 
+  <% if current_user.normal? || current_user.executive? %>
+    <%= link_to "Volver a Mis Resolutions", my_resolutions_user_path(@user) , class:"btn btn-secondary"%>
+  <% else %>
+    <%= link_to "Back to resolutions", resolutions_path, class:"btn btn-secondary" %>
+  <% end %>
+</div>

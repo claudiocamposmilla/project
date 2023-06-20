@@ -1,0 +1,32 @@
+<%= form_with(model: user_comment) do |form| %>
+  <% if user_comment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user_comment.errors.count, "error") %> prohibited this user_comment from being saved:</h2>
+
+      <ul>
+        <% user_comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :ticket_id, style: "display: block" %>
+    <%= form.text_field :ticket_id %>
+  </div>
+
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_field :body %>
+  </div>
+<br>
+<div class="d-grid gap-1 col-2 ">
+  <button type="submit" class="btn btn-primary">Create comment</button>
+</div>
+<% end %>

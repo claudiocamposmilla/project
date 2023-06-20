@@ -1,0 +1,34 @@
+<%= form_for(@user) do |f| %>
+  <!-- Otros campos del formulario -->
+
+
+
+
+  <% if can? :modify_profile, @user %>
+    <div class="field">
+      <h2><%= f.label :profile %></h2>
+      <br>
+      <% options = User.profiles.keys.map(&:to_s) - ["administrator"] %>
+      <% options -= ["supervisor"] if current_user.supervisor? %>
+      
+
+    <div class="form-group">
+      <%= f.select :profile, options_for_select(options, @user.profile), {}, class: "form-control" %>
+    </div>      </div>
+      
+      
+
+    </div>
+  <% end %>
+
+  <!-- Otros campos del formulario -->
+<br>
+<div class="container-fluid">
+
+  <div class="actions">
+<div class="d-grid gap-1 col-3 ">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+  </div>
+  
+<% end %>

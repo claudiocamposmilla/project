@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>User resolutions</h1>
+
+<div id="user_resolutions">
+  <% @user_resolutions.each do |user_resolution| %>
+    <%= render user_resolution %>
+    <p>
+      <%= link_to "Show this user resolution", user_resolution %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New user resolution", new_user_resolution_path %>

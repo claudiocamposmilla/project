@@ -1,0 +1,47 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 style="margin-left: 50px;">Tickets</h1>
+
+<div id="tickets">
+  <% @tickets.each do |ticket| %>
+      <div class="card m-5">
+      <div class="card-header">
+        <div class="card-body">
+          <blockquote class="blockquote mb-1">
+            <div>
+              <strong>Ticket:</strong>
+              <%= dom_id ticket %> 
+            </div>
+            <div>
+            <strong>Summary:</strong>
+            <%= ticket.summary %>
+            </div>
+         <div>
+            <% ticket.user_comments.each do |user_comment| %>
+              <% userid = user_comment.user_id %>
+                <% user = User.find(userid) %>
+                <% if user.normal? %>
+                  <strong>Client:</strong>
+                  <%= user.name %>
+                <% else %>
+                <% end %>
+            <% end %>
+        </div>
+        </div>
+        
+    <div class="d-grid gap-2 col-3 mx-auto">
+      <%= link_to "Show this ticket", ticket, class:"btn btn-secondary" %>
+    </blockquote>
+  </div>
+<p>
+</div>
+</div>   
+</p>
+<% end %>
+</div>
+
+
+<div class="d-grid gap-2 col-6 mx-auto">
+  <%= link_to "New ticket", new_ticket_path, class:"btn btn-primary" %>
+</div>
+<br>

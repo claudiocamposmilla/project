@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 style="margin-left: 50px;">Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+  <div class="card m-5">
+  <div class="card-header">
+  <div class="card-body">
+      <blockquote class="blockquote mb-1">
+        <%= render user %>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <%= link_to "Show this user", user, class:"btn btn-secondary"  %>
+        </div>      
+</blockquote>
+    </div>
+    </div>
+  </div> 
+
+
+
+
+
+
+
+  <% end %>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+  <%= link_to "New user", new_user_path, class:"btn btn-primary" %>
+</div>
+
+<br>
+<br>

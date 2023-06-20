@@ -1,0 +1,38 @@
+
+<h1 style="margin-left: 50px;">Clientes</h1>
+   <div class="card mb-5">
+
+   <div class="card-body">
+
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-2 g-5">
+  <div class="col">
+  
+    <div class="card h-100">
+      <img src="https://uploads-eu-west-1.insided.com/buk-es/attachment/d69e01a1-9db2-402c-add8-7a4cea3454f4_thumb.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Tickets</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <%= link_to 'My Tickets', my_comments_user_path(current_user), class:"btn btn-outline-secondary" %>
+
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card  h-100">
+      <img src="https://img.freepik.com/vector-premium/apreton-manos-acuerdo-socios-comerciales-estrechar-mano-trato-exitoso-personas_193606-277.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Resolutions</h5>
+        <p class="card-text">This is a longer card with supporting text below as </p>
+    <%= link_to "My Resolutions", my_resolutions_user_path(current_user) , class:"btn btn-outline-secondary"%>
+      
+      </div>
+    </div>
+  </div>
+
+  
+</div>
