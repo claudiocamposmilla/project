@@ -1,1 +1,50 @@
-<h1>Admins</h1>
+
+<br>
+<div style="margin-left: 50px;"> 
+           <h1> <%= current_user.profile %></h1>
+           <div>
+           </div>
+          <figcaption class="blockquote-footer">
+          <%= current_user.name %></div>
+   <div class="card mb-3">
+   <div class="card-body">
+
+
+
+<div class="row row-cols-2 row-cols-md-3 g-4">
+
+  <div class="col">
+    <div class="card h-100">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYj_N7sX_VAYnXd_MeFPgv8aubJGqZY0aqce3y21aHwXNmGEe0HSbMsTVEHSTWsBWay5I&usqp=CAU" class="card-img-top" alt="...">
+        <div class="card-body">
+      
+        <h5 class="card-title">Tickets</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <%= link_to 'My Tickets', my_comments_user_path(current_user), class:"btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card  h-100">
+      <img src="https://img.freepik.com/vector-premium/apreton-manos-acuerdo-socios-comerciales-estrechar-mano-trato-exitoso-personas_193606-277.jpg" class="card-img-top" alt="...">
+<div class="card-body">
+        <h5 class="card-title">Resolutions</h5>
+        <p class="card-text">This is a longer card with supporting text below as </p>
+          <%= link_to "My Resolutions", my_resolutions_user_path(current_user) , class:"btn btn-outline-secondary"%>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card  h-100">
+      <img src="https://swimcreative.com/wp-content/uploads/2016/09/NegativeFeedback_blog_post_image.jpg" class="card-img-top" alt="...">
+<div class="card-body">
+        <h5 class="card-title">Comments</h5>
+        <p class="card-text">This is a longer card with supporting text below as </p>
+          <%= link_to "My Comments", my_replies_user_path(current_user) , class:"btn btn-outline-secondary"%>
+      </div>
+    </div>
+  </div>  
+  
+</div>
