@@ -1,5 +1,25 @@
 <%= form_with(model: resolution) do |form| %>
 
+
+
+
+  <div class="field">
+    <h2><%= form.label :ticket_id %></h2>
+    <br>
+      <% options = Ticket.pluck(:id).map(&:to_s) %>
+      <div class="form-group">
+        <%= form.select :ticket_id, options_for_select(options, @resolution.ticket_id), {}, class: "form-control" %>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
   <div>
     <% if can? :update, @resolution %>
       <div class="field">
@@ -9,36 +29,46 @@
     <div class="form-group">
       <%= form.select :resolved, options_for_select(options, @resolution.resolved), {}, class: "form-control" %>
     </div>      </div>
+
+     <div>
+
+
+
+
     <% end %>
   </div>
+  <% if current_user.normal? %>
+  <%else%>
+    <br>
+      <h3><%= form.label :resolution_comment, style: "display: block" %></h3>
+      <%= form.text_field :resolution_comment ,  class:"form-control" %>
+    </div>
+  <%end%>
 
   <% if current_user.normal? %>
-<br>
-  <label class="rating-label">
-    <div class="rating-container">
+    <br>
+      <label class="rating-label">
+        <div class="rating-container">
 
-    <p>
-    <strong>Evaluation: </strong>   
-    <h2 style="margin-left: 10px;" id="rating-value" class="rating-value"> <%= resolution.evaluation %></h2>
-    
+        <p>
+        <strong>Evaluation: </strong>   
+        <h2 style="margin-left: 10px;" id="rating-value" class="rating-value"> <%= resolution.evaluation %></h2>
+        
+        <strong>Evaluation: </strong>   
 
-    <%= form.range_field :evaluation, min: 1, max: 5, step: 1, class: 'rating', style: '--stars: 6;', oninput:"updateRatingValue(this.value)" %>
-  </label>
-</p>
-</div>
-
-
-    
+        <%= form.range_field :evaluation, min: 1, max: 5, step: 1, class: 'rating', style: '--stars: 6;', oninput:"updateRatingValue(this.value)" %>
+      </label>
+    </p>
+    </div>
 
     <div>
       <%= form.label :user_body, style: "display: block" %>
       <%= form.text_field :user_body , class: 'form-control'%>
     </div>
-
-
   <% end %>
 
 <br>
+<div class="actions">
 <div class="d-grid gap-1 col-12 ">
   <button type="submit" class="btn btn-primary">Submit</button>
 </div>

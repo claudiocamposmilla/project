@@ -13,6 +13,7 @@ class UserCommentsController < ApplicationController
   # GET /user_comments/new
   def new
     @user_comment = UserComment.new
+    @user_comment.user_id = current_user.id
   end
 
   # GET /user_comments/1/edit

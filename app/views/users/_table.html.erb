@@ -1,0 +1,11 @@
+<table>
+  <% tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.id %></td>
+      <td><%= ticket.summary %></td>
+      <td><%= ticket.description %></td>
+      <td><%= ticket.priority %></td>
+      <td><%= ticket.status %></td>
+    </tr>
+  <% end %>
+</table>

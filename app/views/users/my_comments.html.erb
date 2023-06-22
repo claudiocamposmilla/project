@@ -1,5 +1,14 @@
 <br>
 
+<%= form_with url: my_comments_user_path(@user), method: :get, local: true, id: 'filter-form' do |form| %>
+  <%= form.select :filter, [['Sin Filtro', ''], ['Prioridad', 'priority']], {}, onchange: 'filterTickets(this.value)' %>
+<% end %>
+
+<div id="tickets-table">
+  <%= render 'table', tickets: @tickets %>
+</div>
+
+
 <h1 style="margin-left: 50px;">Mis Tickets</h1>
 
   <% @tickets.each do |ticket| %>

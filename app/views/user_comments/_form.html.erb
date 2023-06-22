@@ -12,21 +12,38 @@
   <% end %>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id, style: "display: block" %>
+    <h2><%= current_user.name %></h2>  
+   </div>
+
+
+  <div class="field">
+    <h2><%= form.label :ticket_id %></h2>
+    <br>
+      <% options = Ticket.pluck(:id).map(&:to_s) %>
+      <div class="form-group">
+        <%= form.select :ticket_id, options_for_select(options, @user_comment.ticket_id), {}, class: "form-control" %>
+      </div>
   </div>
 
-  <div>
-    <%= form.label :ticket_id, style: "display: block" %>
-    <%= form.text_field :ticket_id %>
-  </div>
+
+
+    
+
+
 
   <div>
+  <br>
     <%= form.label :body, style: "display: block" %>
-    <%= form.text_field :body %>
+    <%= form.text_field :body ,  class:"form-control" %>
   </div>
+
+
+
+
+
 <br>
 <div class="d-grid gap-1 col-2 ">
-  <button type="submit" class="btn btn-primary">Creaete comment</button>
+  <button type="submit" class="btn btn-primary">Create comment</button>
 </div>
 <% end %>

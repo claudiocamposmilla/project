@@ -8,8 +8,20 @@ class UsersController < ApplicationController
 
   def my_comments
     @user = User.find(params[:id])
-    @tickets = @user.tickets.uniq
+    @tickets = case params[:filter]
+               when 'priority'
+                 @user.tickets.order(priority: :desc).uniq
+               else
+                 @user.tickets.uniq
+               end
+  
+    respond_to do |format|
+      format.html
+      format.json { render json: @tickets }
+    end
   end
+  
+  
 
   def my_replies
     if current_user.administrator? || current_user.supervisor? || current_user.executive?
