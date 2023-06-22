@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  
+  #root "static_pages#admin_index"
   root "static_pages#home"
+
   resources :executive_users, controller: 'users', type: 'executive' do
     resources :user_tickets
   end

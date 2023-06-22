@@ -3,6 +3,7 @@
 <div style="margin-left: 50px;"> 
            <h1> <%= current_user.profile %></h1>
            <div>
+           <br>
            </div>
           <figcaption class="blockquote-footer">
           <%= current_user.name %></div>
@@ -20,7 +21,14 @@
       
         <h5 class="card-title">Tickets</h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <%= link_to 'My Tickets', my_comments_user_path(current_user), class:"btn btn-outline-secondary" %>
+            <% if current_user.normal? || current_user.executive? %>
+              <%= link_to 'My Tickets', my_comments_user_path(current_user), class: "btn btn-secondary" %>
+            <% else %>
+              <%= link_to 'Ticket', tickets_path, class: 'btn btn-secondary' %>
+            <% end %>
+
+
+
       </div>
     </div>
   </div>
@@ -31,8 +39,11 @@
 <div class="card-body">
         <h5 class="card-title">Resolutions</h5>
         <p class="card-text">This is a longer card with supporting text below as </p>
-          <%= link_to "My Resolutions", my_resolutions_user_path(current_user) , class:"btn btn-outline-secondary"%>
-      </div>
+            <% if current_user.normal? || current_user.executive? %>
+              <%= link_to 'My resolutions', my_resolutions_user_path(current_user), class: "btn btn-secondary" %>
+            <% else %>
+              <%= link_to 'Resolutions', resolutions_path, class: "btn btn-secondary"%>
+            <% end %>      </div>
     </div>
   </div>
 
@@ -42,7 +53,7 @@
 <div class="card-body">
         <h5 class="card-title">Comments</h5>
         <p class="card-text">This is a longer card with supporting text below as </p>
-          <%= link_to "My Comments", my_replies_user_path(current_user) , class:"btn btn-outline-secondary"%>
+          <%= link_to "My Comments", my_replies_user_path(current_user) , class:"btn btn-secondary"%>
       </div>
     </div>
   </div>  

@@ -3,18 +3,22 @@
 <%= render "form", ticket: @ticket %>
 
 <br>
-<div class="form-container">
-  <div>
-    <%= link_to "Show this ticket", @ticket, class:"btn btn-outline-secondary" %> |
-    <%= link_to "Back to tickets", tickets_path , class:"btn btn-outline-secondary"%>
-  </div>
-</div>
+
 
 
 
   <% if can? :modify_profile, @user %>
     <div class="field">
-    <%= link_to "Show this ticket", @ticket, class:"btn btn-outline-secondary" %> |
-    <%= link_to "Back to tickets", tickets_path , class:"btn btn-outline-secondary"%>
+        <div class="container-fluid">
+      <div class="actions">
+        <div class="d-grid gap-2 col-6 ">
+          <button type="submit" class="btn btn-success">Submit</button>
+          <%= link_to "Show this ticket", @ticket, class:"btn btn-secondary" %> 
+          <%= link_to "Back to tickets", tickets_path , class:"btn btn-secondary"%>
+    
+        </div>
+      </div>
     </div>
+    </div>
+
   <% end %>

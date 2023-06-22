@@ -13,10 +13,22 @@
   </div>
 
   <% if current_user.normal? %>
-    <div>
-      <%= form.label :evaluation, style: "display: block" %>
-      <%= form.select :evaluation, (1..5).to_a %>
-    </div>
+<br>
+  <label class="rating-label">
+    <div class="rating-container">
+
+    <p>
+    <strong>Evaluation: </strong>   
+    <h2 style="margin-left: 10px;" id="rating-value" class="rating-value"> <%= resolution.evaluation %></h2>
+    
+
+    <%= form.range_field :evaluation, min: 1, max: 5, step: 1, class: 'rating', style: '--stars: 6;', oninput:"updateRatingValue(this.value)" %>
+  </label>
+</p>
+</div>
+
+
+    
 
     <div>
       <%= form.label :user_body, style: "display: block" %>
@@ -24,11 +36,16 @@
     </div>
 
 
-
   <% end %>
 
 <br>
-<div class="d-grid gap-1 col-3 ">
+<div class="d-grid gap-1 col-12 ">
   <button type="submit" class="btn btn-primary">Submit</button>
 </div>
+
 <% end %>
+<script>
+  function updateRatingValue(value) {
+    document.getElementById('rating-value').innerText = value;
+  }
+</script>
