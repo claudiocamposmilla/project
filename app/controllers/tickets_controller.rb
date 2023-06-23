@@ -3,12 +3,23 @@ class TicketsController < ApplicationController
 
   # GET /tickets or /tickets.json
   def index
-    @tickets = Ticket.all
+    if params[:search].present? && current_user.administrator? || current_user.supervisor? || current_user.executive?
+      users = User.where("email LIKE ?", "%#{params[:search]}%")
+      @tickets = Ticket.joins(:user_comments).where(user_comments: { user_id: users }).uniq
+    else
+      @tickets = Ticket.all
+    end
   end
 
   # GET /tickets/1 or /tickets/1.json
   def show
     @user = current_user
+
+    
+   
+
+
+    
   end
 
   # GET /tickets/new

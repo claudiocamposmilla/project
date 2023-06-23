@@ -75,13 +75,25 @@
               <% end %>
             <% end %>
 
+   
+
+
+        <% if user_signed_in? %>
+          <li class="Resolutions">
+            <% if current_user.normal?  %>
+            <%= link_to "Crear Ticket", new_ticket_path, class: "btn btn-primary"%>
+            <% else %>
+            <% end %>
+          </li>
+        <% end %>
 
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-
+      <% if user_signed_in? && !current_user.normal? %>
+        <form class="d-flex" action="/tickets" method="GET">
+          <input class="form-control me-2" type="search" placeholder="Search tickets" aria-label="Search" name="search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      <% end %>
     </div>
   </div>
 </nav>

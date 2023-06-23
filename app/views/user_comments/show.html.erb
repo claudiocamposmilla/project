@@ -3,8 +3,12 @@
 <%= render @user_comment %>
 
 <div>
-  <%= link_to "Edit this user comment", edit_user_comment_path(@user_comment) %> |
-  <%= link_to "Back to user comments", user_comments_path %>
-
-  <%= button_to "Destroy this user comment", @user_comment, method: :delete %>
+  <%= link_to "Edit this user comment", edit_user_comment_path(@user_comment), class: "btn btn-secondary"  %> 
+  <%= link_to "Back to My comments",  my_replies_user_path(current_user), class: "btn btn-secondary"  %>
+</div>
+<div>
+<br>
+  <%= button_to "Destroy this user comment", @user_comment, method: :delete , class: "btn btn-outline-danger" %>
+</div>
+</div>
 </div>

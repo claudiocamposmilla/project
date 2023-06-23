@@ -22,13 +22,13 @@ user7 = User.create(email: 'user7@example.com', password: 'password', password_c
 
 /Creación de tickets/
 
-ticket1 = Ticket.create(claim_date: Date.today, due_date: Date.today + 7.days, incident_date: Date.today, summary: "Ticket 1", description: "Description for ticket 1", tags: "tag 1")
-ticket2 = Ticket.create(claim_date: Date.today, due_date: Date.today + 7.days, incident_date: Date.today, summary: "Ticket 2", description: "Description for ticket 2", tags: "tag 2")
-ticket3 = Ticket.create(claim_date: Date.today, due_date: Date.today + 7.days, incident_date: Date.today, summary: "Ticket 3", description: "Description for ticket 3", tags: "tag 3")
-ticket4 = Ticket.create(claim_date: Date.today, due_date: Date.today + 7.days, incident_date: Date.today, summary: "Ticket 4", description: "Description for ticket 4", tags: "tag 4")
-ticket5 = Ticket.create(claim_date: Date.today, due_date: Date.today + 7.days, incident_date: Date.today, summary: "Ticket 5", description: "Description for ticket 5", tags: "tag 5")
-ticket6 = Ticket.create(claim_date: Date.today, due_date: Date.today + 7.days, incident_date: Date.today, summary: "Ticket 6", description: "Description for ticket 6", tags: "tag 6")
-ticket7 = Ticket.create(claim_date: Date.today, due_date: Date.today + 7.days, incident_date: Date.today, summary: "Ticket 7", description: "Description for ticket 7", tags: "tag 7")
+ticket1 = Ticket.create(claim_date: Date.today, due_date: Date.today + 10.days, incident_date: Date.today, summary: "Ticket 1", description: "Description for ticket 1", tags: "tag 1", priority: 2)
+ticket2 = Ticket.create(claim_date: Date.today, due_date: Date.today + 8.days, incident_date: Date.today, summary: "Ticket 2", description: "Description for ticket 2", tags: "tag 2", priority: 2)
+ticket3 = Ticket.create(claim_date: Date.today, due_date: Date.today + 12.days, incident_date: Date.today, summary: "Ticket 3", description: "Description for ticket 3", tags: "tag 3", priority: 1)
+ticket4 = Ticket.create(claim_date: Date.today, due_date: Date.today + 9.days, incident_date: Date.today, summary: "Ticket 4", description: "Description for ticket 4", tags: "tag 4", priority: 4)
+ticket5 = Ticket.create(claim_date: Date.today, due_date: Date.today + 12.days, incident_date: Date.today, summary: "Ticket 5", description: "Description for ticket 5", tags: "tag 5", priority: 5)
+ticket6 = Ticket.create(claim_date: Date.today, due_date: Date.today + 7.days, incident_date: Date.today, summary: "Ticket 6", description: "Description for ticket 6", tags: "tag 6", priority: 3)
+ticket7 = Ticket.create(claim_date: Date.today, due_date: Date.today + 7.days, incident_date: Date.today, summary: "Ticket 7", description: "Description for ticket 7", tags: "tag 7", priority: 3)
 
 / Esta parte será para crear los tickets de los usuarios normales /
 user_ticket1 = UserComment.create(user_id: user1.id, ticket_id: ticket1.id)

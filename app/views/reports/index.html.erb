@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Reporte de Tickets por Fechas</h2>
+
+
+      <%= form_with url: tickets_by_dates_reports_path, method: :get, local: true, id: 'date-range-form' do |form| %>
+        <%= form.label :start_date, 'Fecha de inicio' %>
+        <%= form.date_field :start_date %>
+
+        <%= form.label :end_date, 'Fecha de fin' %>
+        <%= form.date_field :end_date %>
+
+        <%= form.submit 'Generar reporte' %>
+      <% end %>
+
+      <p id="total-tickets">Total de tickets: <%= @total_tickets %></p>
+      <p id="open-tickets">Tickets abiertos: <%= @open_tickets %></p>
+      <p id="closed-tickets">Tickets cerrados: <%= @closed_tickets %></p>
+      
+
+
+
+      <!-- Aquí irá el contenido del primer reporte -->
+    </div>
+    <div class="col-md-4">
+      <h2>Reporte de Tickets Vencidos</h2>
+      <!-- Aquí irá el contenido del segundo reporte -->
+    </div>
+    <div class="col-md-4">
+      <h2>Reporte de Rendimiento de Ejecutivos</h2>
+      <!-- Aquí irá el contenido del tercer reporte -->
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.querySelector('#date-range-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  fetch(this.action + '?' + new URLSearchParams(new FormData(this)), {
+    headers: {
+      "Accept": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then(report => {
+    document.querySelector('#total-tickets').innerText = `Total de tickets: ${report.total_tickets}`;
+    document.querySelector('#open-tickets').innerText = `Tickets abiertos: ${report.open_tickets}`;
+    document.querySelector('#closed-tickets').innerText = `Tickets cerrados: ${report.closed_tickets}`;
+  });
+});
+</script>

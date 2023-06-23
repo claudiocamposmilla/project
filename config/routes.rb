@@ -40,5 +40,8 @@ Rails.application.routes.draw do
     get 'my_resolutions', on: :member
   end
 
+  get 'reports', to: 'reports#index'
+
+  get 'reports/tickets_by_dates', to: 'reports#tickets_by_dates', as: 'tickets_by_dates_reports'
 
 end

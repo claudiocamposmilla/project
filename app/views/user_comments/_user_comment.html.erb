@@ -1,7 +1,12 @@
+
+<div class="card m-5">
+<div class="card-header">
+    <div class="card-body">
+
 <div id="<%= dom_id user_comment %>">
   <p>
     <strong>User:</strong>
-    <%= user_comment.user_id %>
+    <%= current_user.name %>
   </p>
 
   <p>
@@ -14,4 +19,7 @@
     <%= user_comment.body %>
   </p>
 
+
+
+</div>
 </div>

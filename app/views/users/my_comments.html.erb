@@ -1,44 +1,70 @@
 <br>
+<h1 style="margin-left: 50px;">My Tickets
 
-<%= form_with url: my_comments_user_path(@user), method: :get, local: true, id: 'filter-form' do |form| %>
-  <%= form.select :filter, [['Sin Filtro', ''], ['Prioridad', 'priority']], {}, onchange: 'filterTickets(this.value)' %>
+<div class="container">
+<div class="d-grid gap-3 d-md-flex justify-content-md-end">
+
+</div>
+</div>
+</h1>
+
+
+
+<script>
+window.filterTickets = function(filter) {
+  fetch(`/users/${document.querySelector('#filter-form').getAttribute('action').split('/')[2]}/my_comments?filter=${filter}`, {
+    headers: {
+      "Accept": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then(tickets => {
+    const ticketsTable = document.querySelector('#tickets-table');
+    ticketsTable.innerHTML = '';
+    tickets.forEach(ticket => {
+      ticketsTable.innerHTML += `
+        <div class="card m-5">
+          <div class="card-header">
+            <div class="card-body">
+              <blockquote class="blockquote mb-3">
+                <div><h2>${ticket.summary}</h2></div>
+                <div>
+                  
+                  <figcaption class="blockquote-footer">${ticket.claim_date}</div>
+                  <div>${ticket.description}</div>
+
+                  <br>
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="/tickets/${ticket.id}" class="btn btn-secondary">Show this ticket</a>
+                  </div>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  });
+};
+</script>
+
+<br>
+
+<% if @is_executive %>
+  <%= form_with url: my_comments_user_path(@user), method: :get, local: true, id: 'filter-form' do |form| %>
+    <div class="d-grid gap-2 col-2 ">
+    <div style="margin-left: 55px;">
+    <%= form.select :filter, [['Sin Filtro', ''], ['Prioridad', 'priority'], ['Urgencia', 'urgency']], {}, onchange: 'filterTickets(this.value)', class: "form-select"  %>
+    </div>
+    </div>
+  
+  <% end %>
 <% end %>
+
+
+
+
+
 
 <div id="tickets-table">
   <%= render 'table', tickets: @tickets %>
 </div>
-
-
-<h1 style="margin-left: 50px;">Mis Tickets</h1>
-
-  <% @tickets.each do |ticket| %>
-      <div class="card m-5">
-      <div class="card-header">
-      <div class="card-body">
-      <blockquote class="blockquote mb-3">
-          <div><h2><%= ticket.summary %></h2></div>
-          <div>
-          <br>
-          <figcaption class="blockquote-footer">
-          <%= ticket.claim_date %></div>
-
-          <div><%= ticket.description %></div>
-          
-          <br>
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <%= link_to "Show this ticket", ticket, class:"btn btn-secondary" %>
-          </div>  
-
-      </blockquote>
-      </div>
-      </div>
-      </div>      
-    
-  <% end %>
-
-
-<div class="d-grid gap-2 col-6 mx-auto">
-  <%= link_to "Crear nuevo ticket", new_ticket_path, class: "btn btn-success" %>
-</div>
-<br>
-

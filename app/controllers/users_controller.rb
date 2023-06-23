@@ -8,9 +8,12 @@ class UsersController < ApplicationController
 
   def my_comments
     @user = User.find(params[:id])
+    @is_executive = @user.profile == 'executive'
     @tickets = case params[:filter]
                when 'priority'
                  @user.tickets.order(priority: :desc).uniq
+               when 'urgency'
+                 @user.tickets.order(due_date: :asc).uniq
                else
                  @user.tickets.uniq
                end
@@ -27,12 +30,15 @@ class UsersController < ApplicationController
     if current_user.administrator? || current_user.supervisor? || current_user.executive?
       # Si el usuario es un administrador, supervisor o ejecutivo, obtenemos todos los comentarios de todos los usuarios
       @user_comments_grouped_by_ticket = UserComment.includes(:ticket, :user).group_by(&:ticket_id)
+
     else
       # Si no, solo obtenemos los comentarios del usuario actual
       @user = User.find(params[:id])
       @user_comments_grouped_by_ticket = @user.user_comments.includes(:ticket).group_by(&:ticket_id)
+
     end
   end
+
 
   def my_resolutions
     @user = User.find(params[:id])
@@ -161,15 +167,6 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-
-
-
-
-
-
-
-
-
 
 
 

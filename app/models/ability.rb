@@ -14,6 +14,10 @@ class Ability
       can :modify_profile, User do |other_user|
         !other_user.administrator? && !other_user.supervisor?
       end
+    elsif user.executive? || user.normal?
+      can :read, Ticket
+      
+
     end
 
     can :my_comments, User, id: user.id

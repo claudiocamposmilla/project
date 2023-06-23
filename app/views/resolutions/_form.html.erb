@@ -15,28 +15,20 @@
 
 
 
-
-
-
-
-
   <div>
     <% if can? :update, @resolution %>
       <div class="field">
        <h3> <%= form.label :resolved %>
         <% options = Resolution.resolveds.keys.map(&:to_s) %>
       </h3>
-    <div class="form-group">
-      <%= form.select :resolved, options_for_select(options, @resolution.resolved), {}, class: "form-control" %>
-    </div>      </div>
-
-     <div>
-
-
-
-
+      <div class="form-group">
+        <%= form.select :resolved, options_for_select(options, @resolution.resolved), {}, class: "form-control" %>
+      </div>      </div>
+      <div>
     <% end %>
   </div>
+
+
   <% if current_user.normal? %>
   <%else%>
     <br>
@@ -54,7 +46,7 @@
         <strong>Evaluation: </strong>   
         <h2 style="margin-left: 10px;" id="rating-value" class="rating-value"> <%= resolution.evaluation %></h2>
         
-        <strong>Evaluation: </strong>   
+        
 
         <%= form.range_field :evaluation, min: 1, max: 5, step: 1, class: 'rating', style: '--stars: 6;', oninput:"updateRatingValue(this.value)" %>
       </label>

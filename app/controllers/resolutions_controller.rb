@@ -4,6 +4,7 @@ class ResolutionsController < ApplicationController
   # GET /resolutions or /resolutions.json
   def index
     @resolutions = Resolution.all
+
   end
 
   # GET /resolutions/1 or /resolutions/1.json

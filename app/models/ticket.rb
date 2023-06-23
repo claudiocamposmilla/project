@@ -5,10 +5,4 @@ class Ticket < ApplicationRecord
     has_many :users, through: :user_comments
 
 
-
-
-
-
-
-
 end
